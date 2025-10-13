@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计风格 | 薇薇安室内设计</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        :root {
+            --primary: #4a4e69;
+            --secondary: #9a8c98;
+            --accent: #c9ada7;
+            --light: #f2e9e4;
+            --dark: #22223b;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        /* 导航栏 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* 风格介绍区域 */
+        .styles-hero {
+            margin-top: 80px;
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
+                        url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .styles-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .styles-hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: var(--primary);
+        }
+        
+        /* 风格展示区域 */
+        .style-section {
+            margin-bottom: 100px;
+        }
+        
+        .style-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .style-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 30px;
+        }
+        
+        .style-title {
+            font-size: 32px;
+            color: var(--primary);
+        }
+        
+        .style-description {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .style-text {
+            padding: 20px;
+        }
+        
+        .style-text h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .style-features {
+            margin-top: 30px;
+        }
+        
+        .style-features h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .style-features ul {
+            list-style-position: inside;
+        }
+        
+        .style-features li {
+            margin-bottom: 8px;
+        }
+        
+        .style-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .style-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* 风格作品展示 */
+        .style-works {
+            margin-top: 50px;
+        }
+        
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .work-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .work-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .work-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .work-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .work-item:hover .work-img img {
+            transform: scale(1.1);
+        }
+        
+        .work-info {
+            padding: 20px;
+        }
+        
+        .work-info h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .work-info p {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+        
+        /* 风格对比表格 */
+        .comparison {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: var(--light);
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .style-description {
+                grid-template-columns: 1fr;
+            }
+            
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .styles-hero h1 {
+                font-size: 36px;
+            }
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">薇薇安设计</div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">首页</a></li>
+                    <li><a href="index.html#about">个人介绍</a></li>
+                    <li><a href="index.html#portfolio">作品展示</a></li>
+                    <li><a href="#" style="color: var(--secondary);">设计风格</a></li>
+                    <li><a href="index.html#contact">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 风格介绍区域 -->
+    <section class="styles-hero">
+        <div class="container">
+            <h1>设计风格</h1>
+            <p>探索三种独具特色的室内设计风格，每一种都融合了功能性与美学，创造独特的空间体验。</p>
+        </div>
+    </section>
+
+    <!-- 现代简约风格 -->
+    <section class="style-section">
+        <div class="container">
+            <div class="style-header">
+                <div class="style-icon" style="background-color: #e8e8e8; color: #4a4e69;">
+                    <span>简</span>
+                </div>
+                <h2 class="style-title">现代简约风格</h2>
+            </div>
+            
+            <div class="style-description">
+                <div class="style-text">
+                    <h3>极简之美，功能至上</h3>
+                    <p>现代简约风格强调"少即是多"的设计理念，通过简洁的线条、中性的色彩和实用的功能布局，创造出宁静、舒适且具有现代感的居住空间。</p>
+                    
+                    <div class="style-features">
+                        <h4>核心特征</h4>
+                        <ul>
+                            <li>简洁明快的线条与几何形状</li>
+                            <li>中性色调为主，点缀少量亮色</li>
+                            <li>功能性家具，减少不必要的装饰</li>
+                            <li>充足的自然光线与开放式布局</li>
+                            <li>高品质材料的纯粹表达</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="style-features">
+                        <h4>适用空间</h4>
+                        <ul>
+                            <li>都市公寓</li>
+                            <li>小型住宅</li>
+                            <li>办公空间</li>
+                            <li>追求简洁生活的人群</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="style-image">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="现代简约风格客厅">
+                </div>
+            </div>
+            
+            <div class="style-works">
+                <h3 class="section-title">现代简约作品</h3>
+                <div class="works-grid">
+                    <div class="work-item">
+                        <div class="work-img">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="简约客厅">
+                        </div>
+                        <div class="work-info">
+                            <h4>都市雅居</h4>
+                            <p>中性色调与简洁线条打造的舒适客厅空间</p>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-img">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="简约厨房">
+                        </div>
+                        <div class="work-info">
+                            <h4>功能厨房</h4>
+                            <p>极简设计下的高效烹饪空间</p>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-img">
+                            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="简约卧室">
+                        </div>
+                        <div class="work-info">
+                            <h4>宁静卧室</h4>
+                            <p>无多余装饰的纯粹休息空间</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 北欧风情风格 -->
+    <section class="style-section">
+        <div class="container">
+            <div class="style-header">
+                <div class="style-icon" style="background-color: #e1f5fe; color: #0288d1;">
+                    <span>北</span>
+                </div>
+                <h2 class="style-title">北欧风情风格</h2>
+            </div>
+            
+            <div class="style-description">
+                <div class="style-text">
+                    <h3>自然舒适，温馨宜居</h3>
+                    <p>北欧风格注重功能性与自然元素的融合，以简洁的线条、温暖的色调和天然材料创造出舒适、温馨且充满人情味的居住环境。</p>
+                    
+                    <div class="style-features">
+                        <h4>核心特征</h4>
+                        <ul>
+                            <li>大量使用天然木材与植物元素</li>
+                            <li>柔和的中性色调与白色为主</li>
+                            <li>注重采光与空间流动性</li>
+                            <li>简洁实用的家具设计</li>
+                            <li>纺织品与手工艺品的点缀</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="style-features">
+                        <h4>适用空间</h4>
+                        <ul>
+                            <li>家庭住宅</li>
+                            <li>度假小屋</li>
+                            <li>儿童房与亲子空间</li>
+                            <li>追求温馨舒适生活的人群</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="style-image">
+                    <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="北欧风格客厅">
+                </div>
+            </div>
+            
+            <div class="style-works">
+                <h3 class="section-title">北欧风情作品</h3>
+                <div class="works-grid">
+                    <div class="work-item">
+                        <div class="work-img">
+                            <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="北欧客厅">
+                        </div>
+                        <div class="work-info">
+                            <h4>温馨客厅</h4>
+                            <p>原木与纺织品打造的舒适家庭空间</p>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-img">
+                            <img src="https://images.unsplash.com/photo-1582582621959-48d27397dc69?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="北欧餐厅">
+                        </div>
+                        <div class="work-info">
+                            <h4>自然餐厅</h4>
+                            <p>木质家具与绿植营造的用餐空间</p>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-img">
+                            <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="北欧卧室">
+                        </div>
+                        <div class="work-info">
+                            <h4>舒适卧室</h4>
+                            <p>柔软纺织品与自然光线打造的休息空间</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工业风格 -->
+    <section class="style-section">
+        <div class="container">
+            <div class="style-header">
+                <div class="style-icon" style="background-color: #bdbdbd; color: #424242;">
+                    <span>工</span>
+                </div>
+                <h2 class="style-title">工业风格</h2>
+            </div>
+            
+            <div class="style-description">
+                <div class="style-text">
+                    <h3>粗犷不羁，个性表达</h3>
+                    <p>工业风格保留建筑原始结构，裸露的砖墙、金属管道和混凝土地面创造出粗犷、个性且富有艺术感的空间氛围。</p>
+                    
+                    <div class="style-features">
+                        <h4>核心特征</h4>
+                        <ul>
+                            <li>裸露的砖墙、管道和结构元素</li>
+                            <li>金属、木材和混凝土的原始质感</li>
+                            <li>中性色调与深色系为主</li>
+                            <li>开放式布局与高天花板</li>
+                            <li>复古家具与工业照明</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="style-features">
+                        <h4>适用空间</h4>
+                        <ul>
+                            <li>LOFT公寓</li>
+                            <li>创意工作室</li>
+                            <li>餐厅与咖啡馆</li>
+                            <li>追求个性与独特风格的人群</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="style-image">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="工业风格空间">
+                </div>
+            </div>
+            
+            <div class="style-works">
+                <h3 class="section-title">工业风格作品</h3>
+                <div class="works-grid">
+                    <div class="work-item">
+                        <div class="work-img">
+                            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="工业风客厅">
+                        </div>
+                        <div class="work-info">
+                            <h4>工业LOFT</h4>
+                            <p>裸露砖墙与金属元素打造的个性空间</p>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-img">
+                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="工业风餐厅">
+                        </div>
+                        <div class="work-info">
+                            <h4>创意餐厅</h4>
+                            <p>工业元素与温暖灯光结合的商业空间</p>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-img">
+                            <img src="https://images.unsplash.com/photo-1533090368676-1fd25485db88?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="工业风工作室">
+                        </div>
+                        <div class="work-info">
+                            <h4>个性工作室</h4>
+                            <p>原始材料与创意布局的工作空间</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 风格对比表格 -->
+    <section class="comparison">
+        <div class="container">
+            <h2 class="section-title">风格对比</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>特点</th>
+                        <th>现代简约</th>
+                        <th>北欧风情</th>
+                        <th>工业风格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>色彩方案</td>
+                        <td>中性色调，黑白灰为主</td>
+                        <td>白色为主，搭配柔和色彩</td>
+                        <td>深色系，中性色调</td>
+                    </tr>
+                    <tr>
+                        <td>主要材料</td>
+                        <td>玻璃、金属、光面材质</td>
+                        <td>天然木材、纺织品、植物</td>
+                        <td>砖墙、混凝土、金属</td>
+                    </tr>
+                    <tr>
+                        <td>空间布局</td>
+                        <td>开放、简洁、功能分区明确</td>
+                        <td>流动、温馨、注重采光</td>
+                        <td>开放、高挑、保留原始结构</td>
+                    </tr>
+                    <tr>
+                        <td>家具风格</td>
+                        <td>简洁线条、功能性、隐藏收纳</td>
+                        <td>自然材质、简洁造型、舒适性</td>
+                        <td>复古、金属、工业元素</td>
+                    </tr>
+                    <tr>
+                        <td>适用人群</td>
+                        <td>都市精英、追求效率者</td>
+                        <td>家庭用户、自然爱好者</td>
+                        <td>创意人士、个性表达者</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><span>微</span></a>
+                <a href="#"><span>知</span></a>
+                <a href="#"><span>抖</span></a>
+                <a href="#"><span>小</span></a>
+            </div>
+            <p>&copy; 2025 薇薇安设计工作室 版权所有</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
