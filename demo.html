@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的动效作品集</title>
+    <link rel="stylesheet" href="assets/styles/demo-style.css">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js" type="module"></script>
+    </head>
+<body>
+    <header>
+        <h1>我的动效作品集</h1>
+        <p>这里展示了一些我的动效设计作品。</p>
+    </header>
+
+    <main class="portfolio-grid">
+        <div class="portfolio-item" data-type="gif" data-src="motion1.gif" data-title="旋转Logo动效">
+            <!-- <img src="thumbnails/motion1_thumb.jpg" alt="旋转Logo动效缩略图"> -->
+            <div class="logo-container">
+                <div class="brand-logo">
+                    <span class="logo-text">M</span>
+                </div>
+            </div>
+            <h3>旋转Logo动效</h3>
+            <p>一个简单的品牌Logo旋转动画。</p>
+        </div>
+
+        <div class="portfolio-item" 
+             data-type="lottie" 
+             data-src="https://lottie.host/embed/e3f9c49f-5868-4ddd-a02e-8791170f148c/aqW4CiPHPo.lottie" 
+             data-title="加载中动画">
+            <dotlottie-wc
+            src="https://lottie.host/e3f9c49f-5868-4ddd-a02e-8791170f148c/aqW4CiPHPo.lottie"
+            style="width: 300px;height: 300px"
+            autoplay
+            loop
+            ></dotlottie-wc>
+            <h3>加载中动画</h3>
+            <p>用于数据加载时的等待效果。</p>
+        </div>
+
+
+        <div class="portfolio-item" 
+            data-type="lottie" 
+            data-src="https://lottie.host/7e008dfb-b0b2-4d56-a36c-2f3b895c1109/lottie_celebration.json" 
+            data-title="登录页加载">
+            <!-- <img src="thumbnails/christmas_thumb.jpg" alt="圣诞节插画缩略图"> -->
+            <dotlottie-wc src="https://lottie.host/ce83c310-5ab6-46d7-8be1-06393f6b5bea/MsnWb4MzWW.lottie" style="width: 300px;height: 300px" autoplay loop></dotlottie-wc> 
+            <h3>登录页加载动效</h3>
+            <p>登录页加载动效，使用品牌logo体现系统的扫描和监控主题。</p>
+        </div>
+
+
+
+    </main>
+</body>
+</html>
