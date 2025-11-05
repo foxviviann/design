@@ -83,7 +83,7 @@
                 <!-- 项目3 -->
                 <div class="portfolio-item" data-project="project3">
                     <div class="portfolio-img">
-                        <img src="assets/images/3.jpg" alt="卧室设计">
+                        <img src="assets/images/ChineseStyle/IMG_3663.JPG" alt="卧室设计">
                     </div>
                     <div class="portfolio-info">
                         <h3>温馨卧室</h3>
@@ -105,7 +105,7 @@
                 <!-- 项目5 -->
                 <div class="portfolio-item" data-project="project5">
                     <div class="portfolio-img">
-                        <img src="assets/images/5.jpg" alt="餐厅设计">
+                        <img src="assets/images/SongStyle/IMG_3717.JPG" alt="餐厅设计">
                     </div>
                     <div class="portfolio-info">
                         <h3>现代餐厅</h3>
@@ -211,7 +211,9 @@
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
         <div class="modal-content">
-            <img class="modal-image" id="modalImg" src="" alt="">
+            <div class="modal-image-container">
+                <img class="modal-image" id="modalImg" src="" alt="">
+            </div>
             <div class="modal-nav">
                 <button class="nav-btn prev-btn">&#10094;</button>
                 <button class="nav-btn next-btn">&#10095;</button>
@@ -219,6 +221,7 @@
             <div class="modal-counter">
                 <span id="currentIndex">1</span> / <span id="totalImages">3</span>
             </div>
+            <div class="swipe-indicator">左右滑动切换图片</div>
         </div>
     </div>
     <!-- 页脚 -->
@@ -234,6 +237,8 @@
         </div>
     </footer>
 
+    <!-- 引用外部JavaScript文件 -->
+    <script src="assets/scripts/modal.js"></script>
     <script>
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -252,153 +257,6 @@
             alert('感谢您的留言！我们会尽快与您联系。');
             this.reset();
         });
-
-        // 图片弹出层功能
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImg');
-        const closeBtn = document.querySelector('.close');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        const currentIndex = document.getElementById('currentIndex');
-        const totalImages = document.getElementById('totalImages');
-        
-        // 定义每个项目的图片数组
-        const projectImages = {
-            project1: [
-                'assets/images/1keting/1.jpeg',
-                'assets/images/1keting/2.jpeg',
-                'assets/images/1keting/3.jpeg',
-                'assets/images/1keting/4.jpeg',
-                'assets/images/1keting/5.jpeg'
-            ],
-            project2: [
-                'assets/images/2chufang/chufang1.jpeg',
-                'assets/images/2chufang/chufang2.jpeg',
-                'assets/images/2chufang/chufang3.jpeg',
-                'assets/images/2chufang/chufang4.jpeg'
-            ],
-            project3: [
-                'assets/images/ChineseStyle/IMG_3663.JPG',
-                'assets/images/ChineseStyle/IMG_3662.JPG'
-            ],
-            project4: [
-                'assets/images/4shufang/1.jpeg',
-                'assets/images/4shufang/2.jpeg',
-                'assets/images/4shufang/3.jpeg'
-            ],
-            project5: [
-                'assets/images/SongStyle/IMG_3717.JPG',
-                'assets/images/SongStyle/IMG_3716.JPG', // 假设有其他相关图片
-                'assets/images/SongStyle/IMG_3718.JPG'
-            ],
-            project6: [
-                'assets/images/6shangye/1.jpg',
-                'assets/images/6shangye/2.jpg',
-                'assets/images/6shangye/3.jpg',
-                'assets/images/6shangye/4.jpg',
-                'assets/images/6shangye/5.jpg',
-                'assets/images/6shangye/6.jpg',
-                'assets/images/6shangye/7.jpg',
-                'assets/images/6shangye/8.jpg'
-            ]
-        };
-        
-        let currentProject = '';
-        let currentImageIndex = 0;
-        
-        // 为每个作品项添加点击事件
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // 获取该项目的标识符
-                currentProject = this.getAttribute('data-project');
-                
-                // 获取点击的图片在数组中的索引
-                const clickedImg = this.querySelector('img').src;
-                const imageArray = projectImages[currentProject];
-                currentImageIndex = 0; // 默认从第一张开始
-                
-                // 如果点击的图片在数组中，找到其索引
-                for (let i = 0; i < imageArray.length; i++) {
-                    if (clickedImg.includes(imageArray[i].split('/').pop())) {
-                        currentImageIndex = i;
-                        break;
-                    }
-                }
-                
-                // 显示图片
-                modalImg.src = projectImages[currentProject][currentImageIndex];
-                updateCounter();
-                
-                // 显示模态框
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // 防止背景滚动
-            });
-        });
-        
-        // 关闭模态框
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // 恢复背景滚动
-        });
-        
-        // 点击模态框背景关闭
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        // 上一张图片
-        prevBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (currentProject && projectImages[currentProject].length > 0) {
-                currentImageIndex = (currentImageIndex - 1 + projectImages[currentProject].length) % projectImages[currentProject].length;
-                modalImg.src = projectImages[currentProject][currentImageIndex];
-                updateCounter();
-            }
-        });
-        
-        // 下一张图片
-        nextBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (currentProject && projectImages[currentProject].length > 0) {
-                currentImageIndex = (currentImageIndex + 1) % projectImages[currentProject].length;
-                modalImg.src = projectImages[currentProject][currentImageIndex];
-                updateCounter();
-            }
-        });
-        
-        // 键盘导航
-        document.addEventListener('keydown', function(e) {
-            if (modal.style.display === 'block') {
-                if (e.key === 'ArrowLeft') {
-                    // 左箭头键 - 上一张
-                    if (currentProject && projectImages[currentProject].length > 0) {
-                        currentImageIndex = (currentImageIndex - 1 + projectImages[currentProject].length) % projectImages[currentProject].length;
-                        modalImg.src = projectImages[currentProject][currentImageIndex];
-                        updateCounter();
-                    }
-                } else if (e.key === 'ArrowRight') {
-                    // 右箭头键 - 下一张
-                    if (currentProject && projectImages[currentProject].length > 0) {
-                        currentImageIndex = (currentImageIndex + 1) % projectImages[currentProject].length;
-                        modalImg.src = projectImages[currentProject][currentImageIndex];
-                        updateCounter();
-                    }
-                } else if (e.key === 'Escape') {
-                    // ESC键 - 关闭模态框
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            }
-        });
-        
-        // 更新计数器
-        function updateCounter() {
-            currentIndex.textContent = currentImageIndex + 1;
-            totalImages.textContent = projectImages[currentProject].length;
-        }
     </script>
 </body>
 </html>
